@@ -42,6 +42,7 @@ cd jwt-auth-panel
 ### 2. Backend Setup
 
 cd jwt-auth-backend
+
 npm install
 
 ##### # Edit your DB config in /db/knex.js or .env
