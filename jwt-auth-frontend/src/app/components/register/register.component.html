@@ -1,0 +1,50 @@
+<div class="container min-vh-100 d-flex align-items-center justify-content-center bg-light">
+  <form (ngSubmit)="onRegister()" class="bg-white p-5 rounded shadow w-100" style="max-width:550px" autocomplete="off">
+    <h2 class="mb-4 text-center text-primary">{{ 'REGISTER' | translate }}</h2>
+    <!-- inputlar burada -->
+    <div class="mb-3">
+      <label class="form-label">{{ 'EMAIL' | translate }}</label>
+      <input [(ngModel)]="email" name="email" type="email" class="form-control" required autocomplete="email"
+        [placeholder]="'EMAIL' | translate" [disabled]="loading">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">{{ 'FULLNAME' | translate }}</label>
+      <input [(ngModel)]="fullName" name="fullName" class="form-control" required autocomplete="name"
+        [placeholder]="'FULLNAME' | translate" [disabled]="loading">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">{{ 'BIRTHDATE' | translate }}</label>
+      <input [(ngModel)]="birthDate" name="birthDate" type="date" class="form-control" required [disabled]="loading">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">{{ 'GENDER' | translate }}</label>
+      <select [(ngModel)]="gender" name="gender" class="form-select" required [disabled]="loading">
+        <option value="" disabled selected>{{ 'SELECT_GENDER' | translate }}</option>
+        <option value="male">{{ 'MALE' | translate }}</option>
+        <option value="female">{{ 'FEMALE' | translate }}</option>
+        <option value="other">{{ 'OTHER' | translate }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">{{ 'PASSWORD' | translate }}</label>
+      <input [(ngModel)]="password" name="password" type="password" class="form-control" required
+        autocomplete="new-password" [placeholder]="'PASSWORD' | translate" [disabled]="loading">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">{{ 'CONFIRM_PASSWORD' | translate }}</label>
+      <input [(ngModel)]="passwordConfirm" name="password" type="password" class="form-control" required
+        autocomplete="new-password" [placeholder]="'CONFIRM_PASSWORD' | translate" [disabled]="loading"
+        (blur)="onPasswordMatch()">
+    </div>
+    <button class="btn btn-success w-100 mb-2" type="submit" [disabled]="loading">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+      {{ 'REGISTER' | translate }}
+    </button>
+    <a routerLink="/login" href="/login" class="btn btn-outline-secondary w-100" type="button"
+      [class.disabled]="loading">
+      {{ 'ALREADY_HAVE_ACCOUNT' | translate }}
+    </a>
+    <div *ngIf="success" class="alert alert-success mt-3 py-2 text-center">{{ success }}</div>
+    <div *ngIf="error" class="alert alert-danger mt-3 py-2 text-center">{{ error }}</div>
+  </form>
+</div>

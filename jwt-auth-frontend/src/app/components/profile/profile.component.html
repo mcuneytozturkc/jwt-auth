@@ -1,0 +1,117 @@
+<div class="container py-4">
+  <div class="card mx-auto shadow" style="max-width:450px;">
+    <div class="card-body">
+      <h3 class="card-title text-primary mb-3 text-center">
+        {{ 'PROFILE' | translate }}
+      </h3>
+
+      <!-- Profil Görüntüleme -->
+      <div *ngIf="!editMode">
+        <div class="mb-2"><strong>{{ 'EMAIL' | translate }}:</strong> {{ profile?.email }}</div>
+        <div class="mb-2"><strong>{{ 'FULLNAME' | translate }}:</strong> {{ profile?.fullName }}</div>
+        <div class="mb-2"><strong>{{ 'BIRTHDATE' | translate }}:</strong> {{ profile?.birthDate ?? '' | localizedDate}}
+        </div>
+        <div class="mb-2"><strong>{{ 'GENDER' | translate }}:</strong> {{ profile?.gender ?? '' | uppercase | translate
+          }}
+        </div>
+        <div class="mb-2">
+          <strong>{{ 'PASSWORD' | translate }}:</strong>
+          <span class="ms-2">********</span>
+          <button type="button" class="btn btn-outline-primary btn-sm ms-2" (click)="openPasswordModal()">
+            {{ 'CHANGE_PASSWORD' | translate }}
+          </button>
+        </div>
+        <button class="btn btn-primary w-100 mt-3" (click)="toggleEdit()">
+          {{ 'EDIT_PROFILE' | translate }}
+        </button>
+
+      </div>
+
+      <!-- Profil Düzenleme -->
+      <form *ngIf="editMode" (ngSubmit)="updateProfile()">
+        <div class="mb-2">
+          <label class="form-label">{{ 'EMAIL' | translate }}</label>
+          <input [(ngModel)]="editableProfile.email" name="email" type="email" class="form-control" required
+            [placeholder]="'EMAIL' | translate" [disabled]="loading">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">{{ 'FULLNAME' | translate }}</label>
+          <input [(ngModel)]="editableProfile.fullName" name="fullName" type="text" class="form-control" required
+            [placeholder]="'FULLNAME' | translate" [disabled]="loading">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">{{ 'BIRTHDATE' | translate }}</label>
+          <input [(ngModel)]="editableProfile.birthDate" name="birthDate" type="date" class="form-control" required
+            [disabled]="loading">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">{{ 'GENDER' | translate }}</label>
+          <select [(ngModel)]="editableProfile.gender" name="gender" class="form-select" required [disabled]="loading">
+            <option value="" disabled selected>{{ 'SELECT_GENDER' | translate }}</option>
+            <option value="male">{{ 'MALE' | translate }}</option>
+            <option value="female">{{ 'FEMALE' | translate }}</option>
+            <option value="other">{{ 'OTHER' | translate }}</option>
+          </select>
+        </div>
+        <button class="btn btn-success w-100 mt-2" type="submit" [disabled]="loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+          {{ 'SAVE_CHANGES' | translate }}
+        </button>
+        <button class="btn btn-outline-secondary w-100 mt-2" type="button" (click)="toggleEdit()" [disabled]="loading">
+          {{ 'CANCEL' | translate }}
+        </button>
+      </form>
+
+      <!-- Şifre Değiştir Modalı -->
+      <div class="modal fade" [class.show]="passwordModalOpen" [style.display]="passwordModalOpen ? 'block' : 'none'"
+        tabindex="-1" role="dialog" *ngIf="passwordModalOpen" aria-modal="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form (ngSubmit)="changePassword()" autocomplete="on">
+              <div class="modal-header">
+                <h5 class="modal-title">{{ 'CHANGE_PASSWORD' | translate }}</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="passwordModalOpen = false"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Erişilebilirlik için gizli username -->
+                <input type="hidden" name="username" [(ngModel)]="editableProfile.username" autocomplete="username">
+
+                <div class="mb-3">
+                  <label class="form-label" for="newPassword">{{ 'NEW_PASSWORD' | translate }}</label>
+                  <input id="newPassword" type="password" autocomplete="new-password" name="newPassword"
+                    [(ngModel)]="newPassword" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="newPasswordRepeat">{{ 'NEW_PASSWORD_REPEAT' | translate }}</label>
+                  <input id="newPasswordRepeat" type="password" autocomplete="new-password" name="newPasswordRepeat"
+                    [(ngModel)]="newPasswordRepeat" class="form-control" required />
+                </div>
+                <div *ngIf="passwordError" class="alert alert-danger py-2 text-center mt-2">
+                  {{ passwordError }}
+                </div>
+                <div *ngIf="passwordSuccess" class="alert alert-success py-2 text-center mt-2">
+                  {{ passwordSuccess }}
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="passwordModalOpen = false">
+                  {{ 'CANCEL' | translate }}
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  {{ 'SAVE' | translate }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Global başarı/başarısızlık mesajları -->
+      <div *ngIf="message" class="alert alert-success mt-3 text-center">
+        {{ message }}
+      </div>
+      <div *ngIf="error" class="alert alert-danger mt-3 text-center">
+        {{ error }}
+      </div>
+
+    </div>

@@ -1,0 +1,14 @@
+<div class="container min-vh-100 d-flex align-items-center justify-content-center bg-light">
+  <div class="bg-white p-5 rounded shadow text-center" style="max-width:350px">
+    <h2 class="text-success mb-3">
+      <i class="bi bi-check-circle-fill"></i>
+      {{ 'LOGIN_SUCCESS_TITLE' | translate }}
+    </h2>
+    <p class="mb-4">
+      {{ 'LOGIN_SUCCESS_MESSAGE' | translate:{count: countdown} }}
+    </p>
+    <button class="btn btn-primary w-100" (click)="goProfile()">
+      {{ 'GO_PROFILE' | translate }}
+    </button>
+  </div>
+</div>

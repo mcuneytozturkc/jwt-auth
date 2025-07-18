@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand navbar-light bg-white border-bottom mb-4 px-3">
+  <div class="container-fluid">
+    <a class="navbar-brand text-primary" href="#">JWT Auth App</a>
+    <div class="navbar-nav flex-row gap-2">
+      <ng-container *ngIf="isLoggedIn; else guestLinks">
+        <a routerLink="/profile" class="nav-link">{{ 'PROFILE' | translate }}</a>
+        <button class="btn btn-outline-danger ms-2" (click)="logout()">
+          {{ 'LOGOUT' | translate }}
+        </button>
+        <span *ngIf="remainingTime" class="navbar-text ms-3 text-secondary small">
+          {{ 'SESSION_EXPIRES_IN' | translate }}:
+          {{ (remainingTime / 60) | number:'1.0-0' }}:{{ (remainingTime % 60) | number:'2.0-0' }}
+        </span>
+      </ng-container>
+      <ng-template #guestLinks>
+        <a routerLink="/login" class="nav-link">{{ 'LOGIN' | translate }}</a>
+        <a routerLink="/register" class="nav-link">{{ 'REGISTER' | translate }}</a>
+      </ng-template>
+    </div>
+    <form class="d-flex ms-auto">
+      <select [value]="selectedLang" (change)="changeLang($event)" class="form-select" style="width:130px;">
+        <option value="tr">Türkçe</option>
+        <option value="en">English</option>
+      </select>
+
+    </form>
+  </div>
+</nav>
+<router-outlet></router-outlet>
