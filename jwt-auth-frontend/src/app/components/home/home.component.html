@@ -1,0 +1,39 @@
+<div class="container py-5 d-flex flex-column align-items-center justify-content-center min-vh-100">
+  <div class="bg-white rounded shadow px-4 py-5" style="max-width:600px; width:100%;">
+    <h1 class="text-primary text-center mb-3">
+      {{ 'APP_TITLE' | translate }}
+    </h1>
+    <p class="lead text-center mb-4">
+      {{ 'APP_DESCRIPTION' | translate }}
+    </p>
+    <ul class="list-group mb-4">
+      <li class="list-group-item">
+        <strong>Angular 19</strong> (standalone, RxJS, ngx-translate, Bootstrap 5)
+      </li>
+      <li class="list-group-item">
+        <strong>Express.js</strong> (modüler yapı, JWT tabanlı kimlik doğrulama)
+      </li>
+      <li class="list-group-item">
+        <strong>PostgreSQL</strong> (Knex.js ile bağlantı)
+      </li>
+      <li class="list-group-item">
+        <strong>Modern UI/UX</strong> (Çoklu dil desteği, responsive)
+      </li>
+    </ul>
+    <div class="text-center d-flex flex-column flex-sm-row gap-2 justify-content-center">
+      <ng-container *ngIf="!isLoggedIn">
+        <button class="btn btn-success" type="button" (click)="goRegister()">
+          {{ 'GET_STARTED' | translate }}
+        </button>
+        <button class="btn btn-outline-primary" type="button" (click)="goLogin()">
+          {{ 'LOGIN' | translate }}
+        </button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn">
+        <span class="text-success fw-bold">
+          {{ 'ALREADY_LOGGED_IN' | translate }}
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</div>

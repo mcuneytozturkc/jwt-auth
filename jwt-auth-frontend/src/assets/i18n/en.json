@@ -37,5 +37,11 @@
   "REGISTER_GENDER_REQUIRED": "Gender is required.",
   "LOGIN_SUCCESS_TITLE": "Login Successful!",
   "LOGIN_SUCCESS_MESSAGE": "Welcome, you have successfully logged in. Redirecting to your profile in {{count}} seconds.",
-  "GO_PROFILE": "Go to My Profile"
+  "GO_PROFILE": "Go to My Profile",
+  "APP_TITLE": "JWT Authenticated User Panel",
+  "APP_DESCRIPTION": "This project provides a modern, secure and multilingual user management system built with Angular, Express.js and PostgreSQL. Includes registration, login, profile editing, password change and more.",
+  "GET_STARTED": "Get Started",
+  "PASSWORD_CHANGED_SUCCESS": "Password changed successfully!",
+  "PASSWORD_CHANGED_ERROR": "Failed to change password. Please try again.",
+  "ALREADY_LOGGED_IN": "You are already logged in."
 }

@@ -37,5 +37,11 @@
   "REGISTER_GENDER_REQUIRED": "Cinsiyet zorunludur.",
   "LOGIN_SUCCESS_TITLE": "Giriş Başarılı!",
   "LOGIN_SUCCESS_MESSAGE": "Hoş geldiniz, girişiniz başarılı. {{count}} sn sonra profilinize yönlendirileceksiniz.",
-  "GO_PROFILE": "Profilime Git"
+  "GO_PROFILE": "Profilime Git",
+  "APP_TITLE": "JWT Kimlik Doğrulamalı Kullanıcı Paneli",
+  "APP_DESCRIPTION": "Bu proje; Angular, Express.js ve PostgreSQL teknolojileriyle modern, güvenli ve çoklu dil destekli bir kullanıcı yönetim sistemi sunar. Kayıt, giriş, profil düzenleme, şifre değiştirme gibi temel auth özelliklerini içerir.",
+  "GET_STARTED": "Hemen Kaydol",
+  "PASSWORD_CHANGED_SUCCESS": "Şifre başarıyla değiştirildi!",
+  "PASSWORD_CHANGED_ERROR": "Şifre değiştirilemedi. Lütfen tekrar deneyin.",
+  "ALREADY_LOGGED_IN": "Zaten giriş yaptınız."
 }

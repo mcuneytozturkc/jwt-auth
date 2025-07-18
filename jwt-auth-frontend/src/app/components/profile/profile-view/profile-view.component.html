@@ -1,0 +1,17 @@
+<div>
+  <div class="mb-2"><strong>{{ 'EMAIL' | translate }}:</strong> {{ profile.email }}</div>
+  <div class="mb-2"><strong>{{ 'FULLNAME' | translate }}:</strong> {{ profile.fullName }}</div>
+  <div class="mb-2"><strong>{{ 'BIRTHDATE' | translate }}:</strong> {{ profile.birthDate | localizedDate }}</div>
+  <div class="mb-2"><strong>{{ 'GENDER' | translate }}:</strong> {{ profile.gender | uppercase | translate }}
+  </div>
+  <div class="mb-2">
+    <strong>{{ 'PASSWORD' | translate }}:</strong>
+    <span class="ms-2">********</span>
+    <button type="button" class="btn btn-outline-primary btn-sm ms-2" (click)="onChangePassword()">
+      {{ 'CHANGE_PASSWORD' | translate }}
+    </button>
+  </div>
+  <button class="btn btn-primary w-100 mt-3" (click)="onEdit()">
+    {{ 'EDIT_PROFILE' | translate }}
+  </button>
+</div>

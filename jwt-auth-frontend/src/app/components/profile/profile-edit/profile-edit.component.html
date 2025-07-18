@@ -1,0 +1,33 @@
+<form (ngSubmit)="onSave()">
+  <div class="mb-2">
+    <label class="form-label">{{ 'EMAIL' | translate }}</label>
+    <input [(ngModel)]="editableProfile.email" name="email" type="email" class="form-control" required
+      [placeholder]="'EMAIL' | translate" [disabled]="loading">
+  </div>
+  <div class="mb-2">
+    <label class="form-label">{{ 'FULLNAME' | translate }}</label>
+    <input [(ngModel)]="editableProfile.fullName" name="fullName" type="text" class="form-control" required
+      [placeholder]="'FULLNAME' | translate" [disabled]="loading">
+  </div>
+  <div class="mb-2">
+    <label class="form-label">{{ 'BIRTHDATE' | translate }}</label>
+    <input [(ngModel)]="editableProfile.birthDate" name="birthDate" type="date" class="form-control" required
+      [disabled]="loading">
+  </div>
+  <div class="mb-2">
+    <label class="form-label">{{ 'GENDER' | translate }}</label>
+    <select [(ngModel)]="editableProfile.gender" name="gender" class="form-select" required [disabled]="loading">
+      <option value="" disabled selected>{{ 'SELECT_GENDER' | translate }}</option>
+      <option value="male">{{ 'MALE' | translate }}</option>
+      <option value="female">{{ 'FEMALE' | translate }}</option>
+      <option value="other">{{ 'OTHER' | translate }}</option>
+    </select>
+  </div>
+  <button class="btn btn-success w-100 mt-2" type="submit" [disabled]="loading">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+    {{ 'SAVE_CHANGES' | translate }}
+  </button>
+  <button class="btn btn-outline-secondary w-100 mt-2" type="button" (click)="onCancel()" [disabled]="loading">
+    {{ 'CANCEL' | translate }}
+  </button>
+</form>
