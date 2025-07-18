@@ -43,7 +43,7 @@ cd jwt-auth-panel
 
 cd jwt-auth-backend
 npm install
-# Edit your DB config in /db/knex.js or .env
+##### # Edit your DB config in /db/knex.js or .env
 npm run migrate    # (if you have migration scripts)
 npm run start
 
