@@ -43,14 +43,19 @@ cd jwt-auth-panel
 
 cd jwt-auth-backend
 npm install
+
 ##### # Edit your DB config in /db/knex.js or .env
+
 npm run migrate    # (if you have migration scripts)
+
 npm run start
 
 ### 3. Frontend Setup
 
 cd jwt-auth-frontend
+
 npm install
+
 ng serve
 
 ## 🌍 i18n Support
